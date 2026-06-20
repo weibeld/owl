@@ -4,11 +4,11 @@
 
 A tool to fixate insights in a retrievable format with as little friction as possible, making them retrievable and interpretable at any time, and ensuring that they are never lost.
 
-## 2. Core Philosophy
+## 2. Core Ideas
 
-1. Organisation is the enemy
-2. Capture is all that matters
-3. AI handles retrieval
+1. Append-only: organisation and curatino are the enemies
+2. Minimal capture friction: from brain to disk as directly as possible
+3. LLM-based retrieval: meaning derived asynchronously by retrieval
 
 ## 3. Core Features
 
@@ -37,7 +37,7 @@ These are features that might be added after evaluating the viability of the cor
 
 Owl differs from traditional note-taking apps like Notion, Obsidian or Roam in that notes (insights) are append-only and not intended to be repeatedly edited or curated over time. All organisation, synthesis, and retrieval is delegated to an LLM-based retrieval layer.
 
-## 7. Related Solution Case Studies
+## 7. Related Solutions Case Studies
 
 Closer look at solutions with similar ideas as Owl.
 
@@ -52,6 +52,14 @@ Owl can be seen as a stripped-down version of Mem that removes all non-essential
 The core philosophy is similar to Owl: eliminate organisation (no folders), frictionless capture (create and search are the same action), and a focus on efficient retrieval. note model. The main limitation is that retrieval is purely keyword-based (not using RAG or LLMs) since Notational Velocity originates from the pre-LLM era (first published in 2009, latest version from 2011).
 
 Notational Velocity can be seen as an early attempt at implementing (parts of) the core ideas of Owl and Mem from the pre-LLM era.
+
+### [Dracula](https://github.com/weibeld/dracula)
+
+TODO
+
+### [Anteater](anteater)
+
+TODO
 
 ## 8. Idea Evolution
 
