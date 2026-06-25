@@ -2,13 +2,13 @@
 
 ## 1. Motivation
 
-A tool to fixate insights in a retrievable format with as little friction as possible, making them retrievable and interpretable at any time, and ensuring that they are never lost.
+A tool to record insights in a retrievable format with as little friction as possible, making them retrievable and interpretable at any time, and ensuring that they are never lost.
 
 ## 2. Core Ideas
 
-1. Append-only: organisation and curatino are the enemies
-2. Minimal capture friction: from brain to disk as directly as possible
-3. LLM-based retrieval: meaning derived asynchronously by retrieval
+1. No organisation and curation: no folder structure or cross links, append-only
+2. Minimal friction for capture: single input channel
+3. Intelligent retrieval: LLM-based, deriving structure and meaning
 
 ## 3. Core Features
 
@@ -39,28 +39,32 @@ Owl differs from traditional note-taking apps like Notion, Obsidian or Roam in t
 
 ## 7. Related Solutions Case Studies
 
-Closer look at solutions with similar ideas as Owl.
+Closer look at solutions that use similar ideas as Owl.
 
 ### [Mem](https://get.mem.ai/)
 
-The core philosophy is similar or identical to Owl: capture with minimal friction, AI handles all organisation and retrieval. The main difference is that Mem supports multiple content types (meeting transcripts, web clips, voice notes, messages) whereas Owl has a single content type: the insight.
+The core philosophy is similar or even identical to Owl: minimal friction capture, no organisation, LLM-based retrieval. Meaning and intelligence is fully derived in the retrieval stage. The main difference is that Mem provides a larger set of peripheral features than Owl, such as multiple content types (meeting transcripts, web clips, voice notes, messages), note collections, tags, and a graphical user interface.
 
-Owl can be seen as a stripped-down version of Mem that removes all non-essential concepts and integrations and concnetrates only on the core philosopy with a focus on capturing "insights".
+Mem can be seen as an expanded version of Owl that adds generally useful but non-essential features and integrations to the core philosophy shared with Owl.
+
+> Note: the above description applies to Mem 2.0 which was [released in 2025](https://www.producthunt.com/products/mem-2-0). Earlier versions of Mem exist since 2020 but are not fully LLM-based.
 
 ### [Notational Velocity](https://notational.net/)
 
-The core philosophy is similar to Owl: eliminate organisation (no folders), frictionless capture (create and search are the same action), and a focus on efficient retrieval. note model. The main limitation is that retrieval is purely keyword-based (not using RAG or LLMs) since Notational Velocity originates from the pre-LLM era (first published in 2009, latest version from 2011).
+The core philosophy is similar to Owl: reduce organisation (no explicit categorisation), minimal friction capture (single input field for both capture and search), and a focus on retrieval efficiency (incremental search). The main limitation is that retrieval is done in a conventional keyword-based manner since Notational Velocity originates from the pre-LLM era (first published in 2009, latest version from 2011).
 
-Notational Velocity can be seen as an early attempt at implementing (parts of) the core ideas of Owl and Mem from the pre-LLM era.
+Notational Velocity can be seen as an early attempt at implementing the core ideas of Owl and Mem that has been held back by the limited retrieval technologies that existed at the time when the tool was developed (pre-LLM era).
 
-### [Dracula](https://github.com/weibeld/dracula)
+GitHub: [scrod/nv](https://github.com/scrod/nv) ([wiki](https://github.com/scrod/nv/wiki))
 
-TODO
+### [jrnl](https://jrnl.sh/)
 
-### [Anteater](anteater)
+CLI-based journaling tool with local plain-text file storage. Shares Owl's peripheral preferences (CLI interface, local files, potential Git tracking) but not its core philosophy (capture first, no organisation, intelligent retrieval). Instead, jrnl uses traditional organisation (tags, templates, chronological structure) and conventional date-based and keyword-based retrieval. It doesn't put emphasis on the derivation of meaning and intelligence in the retrieval stage.
 
-TODO
+GitHub: [jrnl-org/jrnl](https://github.com/jrnl-org/jrnl)
 
-## 8. Idea Evolution
+### [GitJournal](https://gitjournal.io/)
 
-TODO: document evolution of idea with information from the [Owl](https://github.com/users/weibeld/projects/18) GitHub Project.
+Mobile frontend for a GitHub repository with markdown notes (also works with GitLab or other providers). Allows viewing and editing notes and save edits directly back to the Git repository. Not related to Owl's core philosophy (minimal friction capture, no organisation, intelligent retrieval), but shares the focus on native Git integration for storage and version control with Owl.
+
+GitHub: [GitJournal/GitJournal](https://github.com/GitJournal/GitJournal)
