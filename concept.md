@@ -1,49 +1,28 @@
-# Owl — Concept Doc
+# Owl — Concept Doc (WIP)
+
+> Note: this document is WIP and may not reflect the current state of the implementation at all times. The working implementation is the authoritative source.
+
+> TODO: extend concept doc to final concept doc structure (see blueprint-workflow repository or elsewhere for a discussion of the settled structure and content of a conept doc).
 
 ## 1. Problem Statement
 
-Personal knowledge management — the externalisation of knowledge and thoughts as text for future retrieval — is commonly practiced through note-taking. Traditional note-taking systems require some form of organisation at capture time (categorisation, tagging, linking, hierarchical structure) in order to make notes retrievable later. Without retrieval, the entire point of personal knowledge management is lost, so organisation is not optional — it is a prerequisite for the system to be useful.
-
-Organisation, however, is labour-intensive and attention-absorbing. More insidiously, it tends to induce a phenomenon we call **curation creep**: the gradual emergence of an urge to treat one's notes as a personal encyclopedia — something that should be complete, comprehensive, consistent, and free of gaps. This leads in the worst case to the creation of notes for the sole purpose of filling a perceived gap, i.e. content that is not driven by genuine knowledge or experience but by the internal logic of the note system itself. At that point, the organisation of notes has become a task of its own, one that competes with and can entirely displace the actual work that note-taking was meant to facilitate.
+> TODO: write a full problem statement. The field is personal knowledge management (PKM) and the following are the key problems to address:
+>
+> - **Organisation overhead:** the ongoing maintenance cost of keeping a structured system coherent — links go stale, categories drift, hierarchies need restructuring, formats need enforcing across all items
+> - **Capture friction:** the decision cost at the moment of capture — where does this item go, what tags, what category, how does it relate to existing content. This causes deferral ("I'll add it properly later") which in practice means loss
 
 ## 2. Proposed Solution
 
-### Redefining Capture and Retrieval
+The root cause of the above problems is the dependency of retrieval on the organisation of information at capture time. With the advent of LLMs this dependency is no longer necessary: LLMs are built precisely for extracting meaning and structure from unorganised textual data.
 
-The root cause of curation creep is the dependency of retrieval on the organisation of information at capture time. Until recently, this dependency was unavoidable: the available retrieval technology relied on explicit structure (tags, folders, links, keywords, etc.) to meaningfully retrieve relevant content.
+Therefore, Owl is built around two core principles:
 
-With the advent of LLMs this changes. LLMs are precisely built for extracting meaning and structure from unorganised textual data. That means, by using LLMs for retrieval, the requirement for organisation at capture time becomes obsolete. This in turn eliminates the main culprit for curation creep.
+1. **No organisation at capture time:** content is captured without categorisation, tagging, linking, or other curation. Capture is a friction-free operation.
+2. **Meaning derivation at retrieval time:** all meaning, structure, and context is derived at retrieval time by an LLM-based retrieval component. Retrieval is the real workhorse.
 
-Therefore, Owl is centred around the following philosophy:
+These two principles have a direct implication for the kind of content Owl accepts: there are no constraints on the content, format, or structure of what is stored, the only requirement is that it is text. Any blob of text — a personal note, a research finding, a copy-pasted snippet, a half-finished thought — is equally valid input. Owl's value generalises uniformly across all of these without modification.
 
-1. **No organisation:** notes are captured without categorisation, tagging, linking, or other curation. Capture becomes a friction-less one-off operation
-2. **Intelligent retrieval:** all meaning, structure, and context is derived at retrieval time by an LLM-based retrieval component. Retrieval is the real workhorse instead of capture and organisation.
-
-In other words, the meaning-deriving logic is moved from the capture stage to the retrieval stage.
-
-### Focus on Insights
-
-The removal of organisation has some consequences on how we look at the recorded knowledge at a conceptual level. The recorded knowledge items do now NOT need to be embedded into a predefined and ever-evolving organisation structure at capture time. As mentioned, the knowledge's organisation is derived in real time at retrieval time.
-
-Instead, captured knowledge items can now take on a fleeting nature and can be created in a "shoot-and-forget" manner. The most important point is that the core knowledge a user wants to record is captured. Any connections, gaps, duplications, etc. in the context of other recorded knowledge is fully derived by the retrieval stage.
-
-This shifts the nature of recorded knowledge items away from notes (which typically have a specific topic and are embedded in a knowledge graph with other existing notes — exactly what enables curation creep) towards the notion of **insights**.
-
-An insight is a piece of knowledge that a user deems worth recording in a specific context, at a specific moment in time. Insights do NOT need to be objectively grounded and harmonised with other recorded knowledge items, as notes usually would, but can be highly subjective, time and context-dependent.
-
-Therefore, Owl revolves around the concept of **insights** as the elementary knowledge items that are captured.
-
-This conceptual shift is another step away from curation creep towards a more efficient knowledge management that captures only what matters with minimal overhead while still enabling effective and efficient retrieval.
-
-## 3. Features
-
-1. **Append-only focus:** insights are intended to be captured and left as-is. Editing is possible for edge cases but is not the intended usage (akin to Git commit amendment).
-2. **Unstructured input:** insights are unstructured blobs of text with no imposed formatting or structure
-3. **CLI-based:** both capture and retrieval are CLI-based. Capture may additionally employ an editor such as Vim for editing, and retrieval may use an LLM agent chat interface.
-4. **Git-based:** the input data (which is the source of truth) is automatically tracked by Git allowing for robust and fully controllable version control and backup.
-5. tbd
-
-## 4. Related Solutions
+## 3. Related Solutions
 
 A closer look at solutions that use similar ideas as Owl.
 
