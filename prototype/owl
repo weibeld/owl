@@ -1,0 +1,27 @@
+#!/bin/bash
+
+config="$HOME/.config/owl/config.ini"
+[[ -f "$config" ]] || { echo "Config file not found: $config" >&2; exit 1; }
+dir=$(grep '^dir=' "$config" | cut -d= -f2-)
+[[ -n "$dir" ]] || { echo "'dir' not configured in $config" >&2; exit 1; }
+[[ -d "$dir" ]] || { echo "Directory does not exist: $dir" >&2; exit 1; }
+
+if [[ "$1" == "--amend" ]]; then
+  file=$(for f in "$dir"/*.md; do
+    name=$(basename "$f")
+    printf '%s\t%s  %s\n' "$name" "$(date -r "${name%.md}" '+%Y-%m-%d %H:%M')" "$(tr '\n' ' ' < "$f")"
+  done | fzf --exact --layout=reverse --delimiter='\t' --with-nth=2.. --preview "cat $dir/{1}" | cut -f1)
+  [[ -n "$file" ]] || { echo "Aborting"; exit 1; }
+  vim "$dir/$file"
+  echo "Amended"
+  exit 0
+fi
+file="$dir/$(date +%s).md"
+vim "$file"
+if [[ ! -f "$file" ]] || [[ -z "$(tr -d '[:space:]' < "$file")" ]]; then
+  rm -f "$file"
+  echo "Aborting due to empty content"
+  exit 1
+else
+  echo "Saved"
+fi
